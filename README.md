@@ -12,7 +12,7 @@ class A extends Model
     use MultiRelationships;
     
     public function category(){
-        //Listcat can be json ids (example: [2,3,43,23]) or string list ids (example: 2,3,43,23)
+        //list_cat can be json ids (example: [2,3,43,23]) or string list ids (example: 2,3,43,23)
         return $this->hasOne(Category::class,'id',['cat_3','cat_2','cat_1','list_cat']);
     }
 }
