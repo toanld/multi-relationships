@@ -44,6 +44,11 @@ trait MultiRelationships
         return new QueryBuilder($connection, $connection->getQueryGrammar(), $connection->getPostProcessor());
     }
 
+    /**
+     * Get value relationship.
+     *
+     * @return Model
+     */
     public function getRelationshipValue($id,$relation_name){
         $data = $this->{$relation_name . "_list"};
         return isset($data[$id]) ? $data[$id] : null;

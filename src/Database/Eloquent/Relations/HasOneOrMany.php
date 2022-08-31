@@ -66,8 +66,13 @@ trait HasOneOrMany
                         $valueJson = null;
                         if(!is_array($v2)){
                             $value = intval($v2);
-                            if($value <= 0){
-                                $valueJson = json_decode($v2,true);
+                            if($value != $v2){
+                                //nếu lá list id
+                                if(preg_match('/^[0-9\,]*$/', $v2)){
+                                    $valueJson = explode(",",$v2);
+                                }else {
+                                    $valueJson = json_decode($v2, true);
+                                }
                             }else {
                                 $newValues[$value] = $value;
                             }
@@ -83,7 +88,12 @@ trait HasOneOrMany
                     $valueJson = null;
                     $value = intval($v1);
                     if($value <= 0){
-                        $valueJson = json_decode($v1,true);
+                        //nếu lá list id
+                        if(preg_match('/^[0-9\,]*$/', $v1)){
+                            $valueJson = explode(",",$v1);
+                        }else {
+                            $valueJson = json_decode($v1, true);
+                        }
                     }else {
                         $newValues[$value] = $value;
                     }
@@ -98,6 +108,7 @@ trait HasOneOrMany
         }
         if(!empty($newValues)) {
             $newValues = array_values($newValues);
+            sort($newValues);
             return $newValues;
         }else{
             return $values;

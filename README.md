@@ -16,3 +16,13 @@ class A extends Model
     }
 }
 ```
+
+###Example
+
+```php
+    $data = Test::with(['category:id,name'])->limit(2)->get();
+    foreach ($data as $row){
+        //return model category relate with field cat_1
+        $category = $row->getRelationshipValue($row->cat_1,'category');
+    }
+```
