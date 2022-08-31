@@ -7,7 +7,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Toanld\Relationship\MultiRelationships;
 
-class A extends Model
+class Test extends Model
 {
     use MultiRelationships;
     
