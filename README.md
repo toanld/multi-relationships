@@ -17,7 +17,7 @@ class A extends Model
 }
 ```
 
-###Example
+### Example
 
 ```php
     $data = Test::with(['category:id,name'])->limit(2)->get();
